@@ -83,11 +83,6 @@ class NetworkController extends GetxController {
   }
 
   final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-    // _dio.interceptors.add(CookieManager(cookieJar));
-  }
 
   void increment() => count.value++;
 }

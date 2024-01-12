@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'type_detail_type.dart';
 
 part 'type_detail_type.g.dart';
 
@@ -27,8 +26,8 @@ class DetailType {
     DetailType? type,
   }) {
     return DetailType(
-      name: name ?? this.name,
-      url: url ?? this.url,
+      name: name ?? name,
+      url: url ?? url,
     );
   }
 

@@ -46,7 +46,7 @@ final kPrimaryTheme = ThemeData(
       iconColor: MaterialStatePropertyAll(kPrimaryColor),
     ),
   ),
-  navigationBarTheme: NavigationBarThemeData(),
+  navigationBarTheme: const NavigationBarThemeData(),
 );
 
 // const kElevationShadow = BoxShadow(

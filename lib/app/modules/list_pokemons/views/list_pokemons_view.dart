@@ -6,7 +6,6 @@ import 'package:indivara_test/app/components/default_text.dart';
 import 'package:indivara_test/config/color_constants.dart';
 import 'package:indivara_test/config/constant.dart';
 import 'package:indivara_test/config/environment.dart';
-import 'package:indivara_test/config/function_utils.dart';
 
 import '../controllers/list_pokemons_controller.dart';
 

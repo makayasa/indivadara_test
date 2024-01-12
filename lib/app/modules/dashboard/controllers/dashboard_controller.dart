@@ -10,16 +10,7 @@ class DashboardController extends GetxController {
     pageController.jumpToPage(index);
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    // pageController.addListener(() {});
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {

@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:indivara_test/app/data/pokemon/type_detail_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'type.dart';
 
 part 'type.g.dart';
 

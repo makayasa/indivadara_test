@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:indivara_test/app/controllers/network_controller.dart';
 import 'package:indivara_test/app/data/pokemon/pokemon.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:indivara_test/app/modules/my_pokemon/controllers/my_pokemon_controller.dart';
-import 'package:indivara_test/config/color_constants.dart';
 import 'package:indivara_test/config/constant.dart';
 import 'package:indivara_test/config/environment.dart';
 import 'package:indivara_test/config/function_utils.dart';
@@ -107,9 +105,9 @@ class DetailPokemonController extends GetxController {
         e.remove('move');
       }
       // logKey('tess', res.data);
-      final _data = Pokemon.fromJson(res.data);
+      final pokemon = Pokemon.fromJson(res.data);
       // logKey('_data', _data.toJson());
-      data.value = _data;
+      data.value = pokemon;
     } on dio.DioException catch (e) {
       logKey('error getDetailPokemon', e.message);
       showToast('Error ${e.message}');
@@ -133,15 +131,5 @@ class DetailPokemonController extends GetxController {
   void onInit() {
     super.onInit();
     initialFunction();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 }

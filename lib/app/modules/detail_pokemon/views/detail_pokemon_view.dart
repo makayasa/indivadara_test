@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:indivara_test/app/components/default_chip.dart';
-import 'package:indivara_test/app/components/default_dialog.dart';
 import 'package:indivara_test/app/components/default_text.dart';
 import 'package:indivara_test/config/color_constants.dart';
 import 'package:indivara_test/config/constant.dart';
 import 'package:indivara_test/config/environment.dart';
-import 'dart:math';
 
-import '../../../../config/function_utils.dart';
 import '../controllers/detail_pokemon_controller.dart';
 
 class DetailPokemonView extends GetView<DetailPokemonController> {

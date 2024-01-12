@@ -1,7 +1,5 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../config/function_utils.dart';
 
@@ -29,7 +27,7 @@ class _PaginationBodyState extends State<PaginationBody> {
   void scrollToTop() {
     scrollController.animateTo(
       0,
-      duration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 200),
       curve: Curves.easeInOut,
     );
     // myController.shouldScrollToTop.value = false;
@@ -42,8 +40,8 @@ class _PaginationBodyState extends State<PaginationBody> {
     scrollController = ScrollController()
       ..addListener(
         () {
-          var _offset = scrollController.position.maxScrollExtent - widget.offsetPage;
-          if (scrollController.position.pixels >= _offset) {
+          var offset = scrollController.position.maxScrollExtent - widget.offsetPage;
+          if (scrollController.position.pixels >= offset) {
             if (!isCalled) {
               logKey('body position masuk', true);
               isCalled = true;

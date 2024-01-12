@@ -5,8 +5,6 @@ import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/detail_pokemon/bindings/detail_pokemon_binding.dart';
 import '../modules/detail_pokemon/views/detail_pokemon_view.dart';
-import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
 import '../modules/list_pokemons/bindings/list_pokemons_binding.dart';
 import '../modules/list_pokemons/views/list_pokemons_view.dart';
 import '../modules/my_pokemon/bindings/my_pokemon_binding.dart';
