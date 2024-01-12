@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:indivara_test/app/data/pokemon/type_detail_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'type.dart';
@@ -8,7 +9,7 @@ part 'type.g.dart';
 @JsonSerializable()
 class Type {
 	final int? slot;
-	final Type? type;
+	final DetailType? type;
 
 	const Type({this.slot, this.type});
 
@@ -21,7 +22,7 @@ class Type {
 
 	Type copyWith({
 		int? slot,
-		Type? type,
+		DetailType? type,
 	}) {
 		return Type(
 			slot: slot ?? this.slot,

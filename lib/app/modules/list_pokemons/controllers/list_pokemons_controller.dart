@@ -34,8 +34,10 @@ class ListPokemonsController extends GetxController {
   }
 
   void toDetailPokemon(int index) {
+    final id = listPokemons[index]['id'];
     Get.toNamed(
       Routes.DETAIL_POKEMON,
+      arguments: {'id': id},
     );
   }
 

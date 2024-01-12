@@ -7,15 +7,15 @@ part of 'move.dart';
 // **************************************************************************
 
 Move _$MoveFromJson(Map<String, dynamic> json) => Move(
-      move: json['move'] == null
-          ? null
-          : Move.fromJson(json['move'] as Map<String, dynamic>),
       versionGroupDetails: (json['version_group_details'] as List<dynamic>?)
           ?.map((e) => VersionGroupDetail.fromJson(e as Map<String, dynamic>))
           .toList(),
+      detailMove: json['detail_move'] == null
+          ? null
+          : DetailMove.fromJson(json['detail_move'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$MoveToJson(Move instance) => <String, dynamic>{
-      'move': instance.move,
       'version_group_details': instance.versionGroupDetails,
+      'detail_move': instance.detailMove,
     };

@@ -20,11 +20,6 @@ class ListPokemonsView extends GetView<ListPokemonsController> {
       //   title: const Text('ListPokemonsView'),
       //   centerTitle: true,
       // ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controller.getPokemons();
-        },
-      ),
       body: Obx(
         () => GridView.builder(
           controller: controller.scrollController,

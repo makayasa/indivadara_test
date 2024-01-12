@@ -4,6 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'dream_world.dart';
 import 'home.dart';
 import 'official_artwork.dart';
+import 'showdown.dart';
 
 part 'other.g.dart';
 
@@ -14,12 +15,18 @@ class Other {
 	final Home? home;
 	@JsonKey(name: 'official-artwork') 
 	final OfficialArtwork? officialArtwork;
+	final Showdown? showdown;
 
-	const Other({this.dreamWorld, this.home, this.officialArtwork});
+	const Other({
+		this.dreamWorld, 
+		this.home, 
+		this.officialArtwork, 
+		this.showdown, 
+	});
 
 	@override
 	String toString() {
-		return 'Other(dreamWorld: $dreamWorld, home: $home, officialArtwork: $officialArtwork)';
+		return 'Other(dreamWorld: $dreamWorld, home: $home, officialArtwork: $officialArtwork, showdown: $showdown)';
 	}
 
 	factory Other.fromJson(Map<String, dynamic> json) => _$OtherFromJson(json);
@@ -30,11 +37,13 @@ class Other {
 		DreamWorld? dreamWorld,
 		Home? home,
 		OfficialArtwork? officialArtwork,
+		Showdown? showdown,
 	}) {
 		return Other(
 			dreamWorld: dreamWorld ?? this.dreamWorld,
 			home: home ?? this.home,
 			officialArtwork: officialArtwork ?? this.officialArtwork,
+			showdown: showdown ?? this.showdown,
 		);
 	}
 
@@ -50,5 +59,6 @@ class Other {
 	int get hashCode =>
 			dreamWorld.hashCode ^
 			home.hashCode ^
-			officialArtwork.hashCode;
+			officialArtwork.hashCode ^
+			showdown.hashCode;
 }

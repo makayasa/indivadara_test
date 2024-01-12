@@ -1,22 +1,23 @@
 import 'package:collection/collection.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'move.dart';
+import 'detail_move.dart';
 import 'version_group_detail.dart';
 
 part 'move.g.dart';
 
 @JsonSerializable()
 class Move {
-	final Move? move;
 	@JsonKey(name: 'version_group_details') 
 	final List<VersionGroupDetail>? versionGroupDetails;
+	@JsonKey(name: 'detail_move') 
+	final DetailMove? detailMove;
 
-	const Move({this.move, this.versionGroupDetails});
+	const Move({this.versionGroupDetails, this.detailMove});
 
 	@override
 	String toString() {
-		return 'Move(move: $move, versionGroupDetails: $versionGroupDetails)';
+		return 'Move(versionGroupDetails: $versionGroupDetails, detailMove: $detailMove)';
 	}
 
 	factory Move.fromJson(Map<String, dynamic> json) => _$MoveFromJson(json);
@@ -24,12 +25,12 @@ class Move {
 	Map<String, dynamic> toJson() => _$MoveToJson(this);
 
 	Move copyWith({
-		Move? move,
 		List<VersionGroupDetail>? versionGroupDetails,
+		DetailMove? detailMove,
 	}) {
 		return Move(
-			move: move ?? this.move,
 			versionGroupDetails: versionGroupDetails ?? this.versionGroupDetails,
+			detailMove: detailMove ?? this.detailMove,
 		);
 	}
 
@@ -42,5 +43,5 @@ class Move {
 	}
 
 	@override
-	int get hashCode => move.hashCode ^ versionGroupDetails.hashCode;
+	int get hashCode => versionGroupDetails.hashCode ^ detailMove.hashCode;
 }
