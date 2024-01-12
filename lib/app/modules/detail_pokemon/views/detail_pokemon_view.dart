@@ -22,7 +22,7 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
       backgroundColor: kBgWhite,
       floatingActionButton: Obx(
         () => Visibility(
-          visible: controller.isLoading.isFalse,
+          visible: controller.isLoading.isFalse && !controller.isCatched.value,
           child: FloatingActionButton.extended(
             icon: Image.asset(
               'assets/pokeball.png',

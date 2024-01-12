@@ -22,9 +22,11 @@ class ListPokemonsView extends GetView<ListPokemonsController> {
       // ),
       body: Obx(
         () => GridView.builder(
+          addAutomaticKeepAlives: true,
           controller: controller.scrollController,
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           itemCount: controller.listPokemons.length,
+          key: const PageStorageKey<String>('list_pokemons'),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 20,
@@ -47,7 +49,6 @@ class ListPokemonsView extends GetView<ListPokemonsController> {
                   children: [
                     Expanded(
                       child: Hero(
-                        
                         tag: id,
                         child: Container(
                           width: double.infinity,

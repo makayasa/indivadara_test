@@ -28,58 +28,66 @@ class MyPokemonView extends GetView<MyPokemonController> {
           itemBuilder: (context, index) {
             final id = controller.myPokemons[index].id;
             String capitalized = controller.myPokemons[index].name ?? '';
-            return Stack(
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                  decoration: const BoxDecoration(
-                    color: kPrimaryColor,
-                    borderRadius: kDefaultBorderRadius10,
-                  ),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: kBgWhite,
-                            borderRadius: kDefaultBorderRadius10,
+            return GestureDetector(
+              onTap: () {
+                controller.detailMyPokemon(index);
+              },
+              child: Stack(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                    decoration: const BoxDecoration(
+                      color: kPrimaryColor,
+                      borderRadius: kDefaultBorderRadius10,
+                    ),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            width: double.infinity,
+                            decoration: const BoxDecoration(
+                              color: kBgWhite,
+                              borderRadius: kDefaultBorderRadius10,
+                            ),
+                            child: Hero(
+                              tag: '${controller.myPokemons[index].id}',
+                              child: CachedNetworkImage(imageUrl: '$imageBaseUrl/$id.png'),
+                            ),
                           ),
-                          child: CachedNetworkImage(imageUrl: '$imageBaseUrl/$id.png'),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      DefText(
-                        // controller.myPokemons[index]['name'],
-                        capitalized.capitalizeFirst!,
-                        color: kBgWhite,
-                      ).semilarge,
-                    ],
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: GestureDetector(
-                    onTap: () => controller.deletePokomen(index),
-                    child: Container(
-                      height: 35,
-                      width: 35,
-                      padding: const EdgeInsets.all(5),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: kInactiveColor,
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          Icons.delete,
-                          size: 20,
+                        const SizedBox(height: 10),
+                        DefText(
+                          // controller.myPokemons[index]['name'],
+                          capitalized.capitalizeFirst!,
                           color: kBgWhite,
+                        ).semilarge,
+                      ],
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: GestureDetector(
+                      onTap: () => controller.deletePokomen(index),
+                      child: Container(
+                        height: 35,
+                        width: 35,
+                        padding: const EdgeInsets.all(5),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: kInactiveColor,
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.delete,
+                            size: 20,
+                            color: kBgWhite,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           },
         ),

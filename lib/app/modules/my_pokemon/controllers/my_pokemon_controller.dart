@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:indivara_test/app/components/default_dialog.dart';
 import 'package:indivara_test/app/data/pokemon/pokemon.dart';
+import 'package:indivara_test/app/routes/app_pages.dart';
 import 'package:indivara_test/config/constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,6 +14,18 @@ class MyPokemonController extends GetxController {
   final myPokemons = <Pokemon>[].obs;
 
   ScrollController scrollController = ScrollController();
+
+  void detailMyPokemon(int index) {
+    Get.toNamed(
+      Routes.DETAIL_POKEMON,
+      arguments: {
+        'is_cathed': true,
+        'id': myPokemons[index].id,
+        // 'data': myPokemons[index].toJson(),
+        'data': myPokemons[index].toJson(),
+      },
+    );
+  }
 
   Future<void> getMyPokemons() async {
     final pref = await SharedPreferences.getInstance();

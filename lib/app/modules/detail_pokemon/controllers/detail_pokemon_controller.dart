@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class DetailPokemonController extends GetxController {
   final network = Get.find<NetworkController>();
   final data = Pokemon().obs;
+
+  final isCatched = false.obs;
   var id = ''.obs;
 
   final isLoading = true.obs;
@@ -75,6 +78,8 @@ class DetailPokemonController extends GetxController {
     }
     final pref = await SharedPreferences.getInstance();
     var temp = pref.getStringList(kMypokemonsKey) ?? [];
+    final encoded = json.encode(data.toJson());
+    logKey('encoded', encoded);
     temp.add(json.encode(data.toJson()));
     pref.setStringList(kMypokemonsKey, temp);
     final myPokemonC = Get.find<MyPokemonController>();
@@ -112,7 +117,14 @@ class DetailPokemonController extends GetxController {
   }
 
   void initialFunction() async {
-    id.value = Get.arguments['id'];
+    id.value = '${Get.arguments['id']}';
+    isCatched.value = Get.arguments['is_cathed'] ?? false;
+    logKey('isCatched.value', isCatched.value);
+    if (isCatched.value) {
+      data.value = Pokemon.fromJson(Get.arguments['data']);
+      isLoading.value = false;
+      return;
+    }
     await getDetailPokemon();
     isLoading.value = false;
   }

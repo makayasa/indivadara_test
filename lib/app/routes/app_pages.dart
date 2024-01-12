@@ -21,11 +21,6 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
-      page: () => const HomeView(),
-      binding: HomeBinding(),
-    ),
-    GetPage(
       name: _Paths.DASHBOARD,
       page: () => const DashboardView(),
       binding: DashboardBinding(),
@@ -40,11 +35,6 @@ class AppPages {
       page: () => const ListPokemonsView(),
       binding: ListPokemonsBinding(),
     ),
-    GetPage(
-      name: _Paths.DETAIL_POKEMON,
-      page: () => const DetailPokemonView(),
-      binding: DetailPokemonBinding(),
-      transitionDuration: kDefaultDuration
-    ),
+    GetPage(name: _Paths.DETAIL_POKEMON, page: () => const DetailPokemonView(), binding: DetailPokemonBinding(), transitionDuration: kDefaultDuration),
   ];
 }

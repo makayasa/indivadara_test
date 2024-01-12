@@ -27,7 +27,7 @@ class ListPokemonsController extends GetxController {
         e['id'] = id;
       }
       listPokemons.addAll(res.data['results']);
-      logKey('res getPokemons', res.data);
+      // logKey('res getPokemons', res.data);
     } on dio.DioException catch (e) {
       logKey('error getPokemons', e.message);
     }
