@@ -34,7 +34,7 @@ class DefaultButton extends StatelessWidget {
           decoration: showBorder
               ? BoxDecoration(
                   border: Border.all(
-                    color: kInactiveColor2,
+                    color: kPrimaryColor,
                   ),
                   borderRadius: kDefaultBorderRadius10,
                 )

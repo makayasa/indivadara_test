@@ -19,7 +19,6 @@ const kGrey = Color(0xFF595959);
 const kInactiveColor = Color(0xFFa6a6a6);
 const kInactiveColor2 = Color(0xFFeaecf0);
 
-
 const kIconTheme = IconThemeData(
   color: kPrimaryColor,
 );

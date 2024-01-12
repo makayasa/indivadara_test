@@ -15,7 +15,7 @@ void main() {
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: kPrimaryTheme,
-      initialBinding: InitialBindings(),
+    initialBinding: InitialBindings(),
     ),
   );
 }

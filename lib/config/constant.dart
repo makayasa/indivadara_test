@@ -16,11 +16,13 @@ TextStyle get kDefaultTextStyle {
   // );
 }
 
+const kMypokemonsKey = 'my_pokemons';
+
 const kDefaultCurve = Curves.easeInOutCirc;
 const kDefaultFastDuration = Duration(milliseconds: 250);
 const kDefaultDuration = Duration(milliseconds: 500);
 
-const kDefaultScaffoldPadding = EdgeInsets.symmetric(horizontal: 10);
+const kDefaultScaffoldPadding = EdgeInsets.symmetric(horizontal: 15);
 
 const kDefaultBorderRadius10 = BorderRadius.all(
   Radius.circular(10),

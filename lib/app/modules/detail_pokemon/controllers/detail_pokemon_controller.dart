@@ -1,9 +1,18 @@
+import 'dart:convert';
+import 'dart:math';
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:indivara_test/app/components/default_dialog.dart';
 import 'package:indivara_test/app/controllers/network_controller.dart';
 import 'package:indivara_test/app/data/pokemon/pokemon.dart';
 import 'package:dio/dio.dart' as dio;
+import 'package:indivara_test/app/modules/my_pokemon/controllers/my_pokemon_controller.dart';
+import 'package:indivara_test/config/color_constants.dart';
+import 'package:indivara_test/config/constant.dart';
 import 'package:indivara_test/config/environment.dart';
 import 'package:indivara_test/config/function_utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailPokemonController extends GetxController {
   final network = Get.find<NetworkController>();
@@ -11,6 +20,73 @@ class DetailPokemonController extends GetxController {
   var id = ''.obs;
 
   final isLoading = true.obs;
+
+  void floatingButton() async {
+    final res = await checkPokemonExist();
+    if (res) {
+      return;
+    }
+    Get.dialog(
+      DefaultDialog(
+        icon: Icons.help_outline,
+        title: 'Are you sure want to catch this pokemon',
+        seccondButton: true,
+        onTapSeccondButton: () {
+          Get.back();
+        },
+        onTap: () {
+          Get.back();
+          catchPokemon();
+        },
+      ),
+    );
+  }
+
+  Future<bool> checkPokemonExist() async {
+    final pref = await SharedPreferences.getInstance();
+    var temp = pref.getStringList(kMypokemonsKey) ?? [];
+    for (var e in temp) {
+      final decode = json.decode(e);
+      final pokemon = Pokemon.fromJson(decode);
+      if (id.value == pokemon.id.toString()) {
+        // showToast('ada');
+        Get.dialog(
+          const DefaultDialog(
+            icon: Icons.cancel_outlined,
+            title: 'You already owned this Pokemon!',
+          ),
+        );
+        return true;
+      }
+    }
+    return false;
+  }
+
+  void catchPokemon() async {
+    final rng = Random().nextInt(2);
+    if (rng == 0) {
+      Get.dialog(
+        const DefaultDialog(
+          icon: Icons.cancel_outlined,
+          title: 'Failed to catch the Pokemon!',
+        ),
+      );
+      return;
+    }
+    final pref = await SharedPreferences.getInstance();
+    var temp = pref.getStringList(kMypokemonsKey) ?? [];
+    temp.add(json.encode(data.toJson()));
+    pref.setStringList(kMypokemonsKey, temp);
+    final myPokemonC = Get.find<MyPokemonController>();
+    await myPokemonC.getMyPokemons();
+    Get.dialog(
+      const DefaultDialog(
+        icon: Icons.check_circle_outline,
+        title: "You're successfully catch the Pokemon!",
+      ),
+    );
+    // showToast('cath');
+  }
 
   Future<void> getDetailPokemon() async {
     try {
@@ -25,9 +101,9 @@ class DetailPokemonController extends GetxController {
         e['detail_move'] = e['move'];
         e.remove('move');
       }
-      logKey('tess', res.data);
+      // logKey('tess', res.data);
       final _data = Pokemon.fromJson(res.data);
-      logKey('_data', _data.toJson());
+      // logKey('_data', _data.toJson());
       data.value = _data;
     } on dio.DioException catch (e) {
       logKey('error getDetailPokemon', e.message);

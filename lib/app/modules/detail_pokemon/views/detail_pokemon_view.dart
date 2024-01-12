@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:indivara_test/app/components/default_chip.dart';
+import 'package:indivara_test/app/components/default_dialog.dart';
 import 'package:indivara_test/app/components/default_text.dart';
 import 'package:indivara_test/config/color_constants.dart';
 import 'package:indivara_test/config/constant.dart';
@@ -19,17 +20,19 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
     Get.put(DetailPokemonController());
     return Scaffold(
       backgroundColor: kBgWhite,
-      floatingActionButton: FloatingActionButton.extended(
-        icon: Image.asset(
-          'assets/pokeball.png',
-          height: 24,
-          width: 24,
+      floatingActionButton: Obx(
+        () => Visibility(
+          visible: controller.isLoading.isFalse,
+          child: FloatingActionButton.extended(
+            icon: Image.asset(
+              'assets/pokeball.png',
+              height: 24,
+              width: 24,
+            ),
+            label: DefText('Catch', color: kBgWhite).semilarge,
+            onPressed: () => controller.floatingButton(),
+          ),
         ),
-        label: DefText('Catch', color: kBgWhite).semilarge,
-        onPressed: () {
-          final a = Random().nextInt(2);
-          logKey('a', a);
-        },
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,21 +41,37 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
             height: Get.mediaQuery.size.height * 0.3,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
+              borderRadius: const BorderRadius.vertical(bottom: Radius.circular(30)),
               boxShadow: [
                 kElevationShadow(),
               ],
             ),
-            child: Center(
-              child: Container(
-                constraints: const BoxConstraints(
-                  minHeight: 200,
+            child: Row(
+              children: [
+                const SizedBox(width: 5),
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                  ),
                 ),
-                child: CachedNetworkImage(
-                  imageUrl: '$imageBaseUrl/${controller.id.value}.png',
-                  fit: BoxFit.contain,
+                const Spacer(),
+                Flexible(
+                  flex: 3,
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      minHeight: 200,
+                    ),
+                    child: CachedNetworkImage(
+                      imageUrl: '$imageBaseUrl/${controller.id.value}.png',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
-              ),
+                const Spacer(),
+              ],
             ),
           ),
           const SizedBox(height: 10),
@@ -65,7 +84,9 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
                   return topChild;
                 },
                 firstChild: const Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    color: kPrimaryColor,
+                  ),
                 ),
                 secondChild: Column(
                   children: [
@@ -85,7 +106,7 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
                       child: Column(
                         children: [
                           Obx(
-                            () => Container(
+                            () => SizedBox(
                               height: 35,
                               child: ListView.separated(
                                 itemCount: controller.data.value.types?.length ?? 0,

@@ -56,7 +56,6 @@ class ListPokemonsView extends GetView<ListPokemonsController> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    // ''.
                     DefText(
                       // controller.listPokemons[index]['name'],
                       capitalized.capitalizeFirst!,
