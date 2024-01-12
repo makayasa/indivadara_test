@@ -128,11 +128,19 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
                           Row(
                             children: [
                               Obx(
-                                () => DefText('${controller.data.value.weight}', fontWeight: FontWeight.bold, color: kInactiveColor).semilarge,
+                                () => DefText(
+                                  '${controller.data.value.weight}.0',
+                                  fontWeight: FontWeight.bold,
+                                  color: kInactiveColor,
+                                ).semilarge,
                               ),
                               const Spacer(),
                               Obx(
-                                () => DefText('${controller.data.value.height}', fontWeight: FontWeight.bold, color: kInactiveColor).semilarge,
+                                () => DefText(
+                                  '${controller.data.value.height}.0',
+                                  fontWeight: FontWeight.bold,
+                                  color: kInactiveColor,
+                                ).semilarge,
                               ),
                             ],
                           ),

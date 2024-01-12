@@ -12,48 +12,46 @@ class DashboardView extends GetView<DashboardController> {
   const DashboardView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('DashboardView'),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView(
-              physics: const NeverScrollableScrollPhysics(),
-              controller: controller.pageController,
-              children: const [
-                ListPokemonsView(),
-                MyPokemonView(),
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: controller.pageController,
+                children: const [
+                  ListPokemonsView(),
+                  MyPokemonView(),
+                ],
+              ),
+            ),
+            Row(
+              children: [
+                Obx(
+                  () => Expanded(
+                    child: NavigationBarItem(
+                      image: controller.pageIndex.value == 0 ? 'assets/pointer.png' : 'assets/pointer_inactive.png',
+                      label: 'Catch Pokemon',
+                      labelColor: controller.pageIndex.value == 0 ? kPrimaryColor : null,
+                      onTap: () => controller.changePage(0),
+                    ),
+                  ),
+                ),
+                Obx(
+                  () => Expanded(
+                    child: NavigationBarItem(
+                      image: controller.pageIndex.value == 1 ? 'assets/pokeball.png' : 'assets/pokeball_inactive.png',
+                      label: 'My Pokemon',
+                      labelColor: controller.pageIndex.value == 1 ? kPrimaryColor : null,
+                      onTap: () => controller.changePage(1),
+                    ),
+                  ),
+                ),
               ],
             ),
-          ),
-          Row(
-            children: [
-              Obx(
-                () => Expanded(
-                  child: NavigationBarItem(
-                    image: controller.pageIndex.value == 0 ? 'assets/pointer.png' : 'assets/pointer_inactive.png',
-                    label: 'Catch Pokemon',
-                    labelColor: controller.pageIndex.value == 0 ? kPrimaryColor : null,
-                    onTap: () => controller.changePage(0),
-                  ),
-                ),
-              ),
-              Obx(
-                () => Expanded(
-                  child: NavigationBarItem(
-                    image: controller.pageIndex.value == 1 ? 'assets/pokeball.png' : 'assets/pokeball_inactive.png',
-                    label: 'My Pokemon',
-                    labelColor: controller.pageIndex.value == 1 ? kPrimaryColor : null,
-                    onTap: () => controller.changePage(1),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
