@@ -2,9 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:indivara_test/app/components/default_dialog.dart';
 import 'package:indivara_test/app/data/pokemon/pokemon.dart';
 import 'package:indivara_test/config/constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../../config/function_utils.dart';
 
 class MyPokemonController extends GetxController {
   final myPokemons = <Pokemon>[].obs;
@@ -23,6 +26,28 @@ class MyPokemonController extends GetxController {
   }
 
   void deletePokomen(int index) async {
+    bool isDelete = await Get.dialog(
+          DefaultDialog(
+            title: 'Are you sure want to release this pokemon?',
+            icon: Icons.help_outline_outlined,
+            seccondButton: true,
+            onTap: () {
+              Get.back(
+                result: true,
+              );
+            },
+            onTapSeccondButton: () {
+              Get.back(
+                result: false,
+              );
+            },
+          ),
+        ) ??
+        false;
+    logKey('isDelete', isDelete);
+    if (!isDelete) {
+      return;
+    }
     final pref = await SharedPreferences.getInstance();
     var res = pref.getStringList(kMypokemonsKey) ?? [];
     myPokemons.removeAt(index);
