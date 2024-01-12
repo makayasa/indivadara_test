@@ -64,9 +64,12 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
                     constraints: const BoxConstraints(
                       minHeight: 200,
                     ),
-                    child: CachedNetworkImage(
-                      imageUrl: '$imageBaseUrl/${controller.id.value}.png',
-                      fit: BoxFit.contain,
+                    child: Hero(
+                      tag: controller.id.value,
+                      child: CachedNetworkImage(
+                        imageUrl: '$imageBaseUrl/${controller.id.value}.png',
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:indivara_test/config/constant.dart';
 
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
@@ -43,6 +44,7 @@ class AppPages {
       name: _Paths.DETAIL_POKEMON,
       page: () => const DetailPokemonView(),
       binding: DetailPokemonBinding(),
+      transitionDuration: kDefaultDuration
     ),
   ];
 }

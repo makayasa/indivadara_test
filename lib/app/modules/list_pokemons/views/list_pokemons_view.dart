@@ -31,7 +31,7 @@ class ListPokemonsView extends GetView<ListPokemonsController> {
             crossAxisSpacing: 10,
           ),
           itemBuilder: (context, index) {
-            final id = controller.listPokemons[index]['id'];
+            final id = '${controller.listPokemons[index]['id']}';
             String capitalized = controller.listPokemons[index]['name'];
             return GestureDetector(
               onTap: () {
@@ -46,13 +46,17 @@ class ListPokemonsView extends GetView<ListPokemonsController> {
                 child: Column(
                   children: [
                     Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        decoration: const BoxDecoration(
-                          color: kBgWhite,
-                          borderRadius: kDefaultBorderRadius10,
+                      child: Hero(
+                        
+                        tag: id,
+                        child: Container(
+                          width: double.infinity,
+                          decoration: const BoxDecoration(
+                            color: kBgWhite,
+                            borderRadius: kDefaultBorderRadius10,
+                          ),
+                          child: CachedNetworkImage(imageUrl: '$imageBaseUrl/$id.png'),
                         ),
-                        child: CachedNetworkImage(imageUrl: '$imageBaseUrl/$id.png'),
                       ),
                     ),
                     const SizedBox(height: 10),
