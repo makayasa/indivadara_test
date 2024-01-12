@@ -4,16 +4,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'color_constants.dart';
 
 TextStyle get kDefaultTextStyle {
-  // return GoogleFonts.poppins(
-  //   color: kBgBlack,
-  //   fontStyle: FontStyle.normal,
-  //   fontWeight: FontWeight.normal,
-  // );
-  return GoogleFonts.nunito(
+  return GoogleFonts.poppins(
     color: kBgBlack,
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.normal,
   );
+  // return GoogleFonts.nunito(
+  //   color: kBgBlack,
+  //   fontStyle: FontStyle.normal,
+  //   fontWeight: FontWeight.normal,
+  // );
 }
 
 const kDefaultCurve = Curves.easeInOutCirc;

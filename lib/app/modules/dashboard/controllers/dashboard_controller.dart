@@ -1,12 +1,19 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DashboardController extends GetxController {
-  //TODO: Implement DashboardController
+  final pageController = PageController();
+  final pageIndex = 0.obs;
 
-  final count = 0.obs;
+  void changePage(int index) {
+    pageIndex.value = index;
+    pageController.jumpToPage(index);
+  }
+
   @override
   void onInit() {
     super.onInit();
+    // pageController.addListener(() {});
   }
 
   @override
@@ -17,7 +24,6 @@ class DashboardController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    pageController.dispose();
   }
-
-  void increment() => count.value++;
 }

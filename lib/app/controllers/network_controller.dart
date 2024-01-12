@@ -4,7 +4,7 @@ import 'package:dio/dio.dart' as dio;
 // import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:get/get.dart';
 
-class DioController extends GetxController {
+class NetworkController extends GetxController {
   final dio.Dio _dio = dio.Dio();
 
   // CookieJar cookieJar = CookieJar();
@@ -44,7 +44,7 @@ class DioController extends GetxController {
         queryParameters: query,
         data: body,
         options: dio.Options(
-          headers: {"Cookie": cookies},
+          // headers: {"Cookie": cookies},
           contentType: 'application/json',
         ),
       );
