@@ -9,7 +9,8 @@ class NetworkController extends GetxController {
 
   // CookieJar cookieJar = CookieJar();
 
-  Future<({bool isConnected, ConnectivityResult connectedVia})> checkConnection() async {
+  Future<({bool isConnected, ConnectivityResult connectedVia})>
+      checkConnection() async {
     _dio.options.connectTimeout = const Duration(milliseconds: 5000);
     final res = await Connectivity().checkConnectivity();
     if (res == ConnectivityResult.none) {

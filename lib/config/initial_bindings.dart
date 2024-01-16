@@ -8,5 +8,4 @@ class InitialBindings implements Bindings {
     Get.put(NetworkController());
     Get.put(MyPokemonController());
   }
-
 }

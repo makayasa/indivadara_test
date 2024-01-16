@@ -8,6 +8,7 @@ abstract class Routes {
   static const MY_POKEMON = _Paths.MY_POKEMON;
   static const LIST_POKEMONS = _Paths.LIST_POKEMONS;
   static const DETAIL_POKEMON = _Paths.DETAIL_POKEMON;
+  static const SAMPLE = _Paths.SAMPLE;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const MY_POKEMON = '/my-pokemon';
   static const LIST_POKEMONS = '/list-pokemons';
   static const DETAIL_POKEMON = '/detail-pokemon';
+  static const SAMPLE = '/sample';
 }

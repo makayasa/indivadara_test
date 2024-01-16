@@ -95,7 +95,8 @@ class DetailPokemonController extends GetxController {
     try {
       dio.Response res = await network.get('$baseUrl/pokemon/${id.value}');
       // logKey('res getDetailPokemon', res);
-      final temp = res.data['sprites']['versions']['generation-vi']['x-y'] ?? {};
+      final temp =
+          res.data['sprites']['versions']['generation-vi']['x-y'] ?? {};
       if (isNotEmpty(temp)) {
         res.data['sprites']['versions']['generation-vi']['xy'] = temp;
         res.data['sprites']['versions']['generation-vi'].remove('x-y');

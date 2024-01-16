@@ -20,7 +20,8 @@ class ListPokemonsController extends GetxController {
     final url = '$baseUrl/pokemon/?offset=${offsetPagination.value}&limit=20';
     try {
       dio.Response res = await network.get(url);
-      offsetPagination.value = int.parse(res.data['next'].split('?').last.split('&').first.split('=').last);
+      offsetPagination.value = int.parse(
+          res.data['next'].split('?').last.split('&').first.split('=').last);
       for (var e in res.data['results']) {
         final List split = e['url'].split('/');
         final id = split[split.length - 2];
@@ -61,6 +62,4 @@ class ListPokemonsController extends GetxController {
     super.onInit();
     initialFunction();
   }
-
-
 }

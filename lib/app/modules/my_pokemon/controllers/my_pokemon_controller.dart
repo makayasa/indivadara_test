@@ -77,6 +77,4 @@ class MyPokemonController extends GetxController {
     super.onInit();
     initialFunction();
   }
-
-
 }

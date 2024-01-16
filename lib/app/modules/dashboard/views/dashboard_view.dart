@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:indivara_test/app/modules/dashboard/components/navigation_bar_item.dart';
 import 'package:indivara_test/app/modules/list_pokemons/views/list_pokemons_view.dart';
 import 'package:indivara_test/app/modules/my_pokemon/views/my_pokemon_view.dart';
+import 'package:indivara_test/app/modules/sample/views/sample_view.dart';
 import 'package:indivara_test/config/color_constants.dart';
 
 import '../controllers/dashboard_controller.dart';
@@ -23,6 +24,7 @@ class DashboardView extends GetView<DashboardController> {
                 children: const [
                   ListPokemonsView(),
                   MyPokemonView(),
+                  SampleView(),
                 ],
               ),
             ),
@@ -31,9 +33,13 @@ class DashboardView extends GetView<DashboardController> {
                 Obx(
                   () => Expanded(
                     child: NavigationBarItem(
-                      image: controller.pageIndex.value == 0 ? 'assets/pointer.png' : 'assets/pointer_inactive.png',
+                      image: controller.pageIndex.value == 0
+                          ? 'assets/pointer.png'
+                          : 'assets/pointer_inactive.png',
                       label: 'Catch Pokemon',
-                      labelColor: controller.pageIndex.value == 0 ? kPrimaryColor : null,
+                      labelColor: controller.pageIndex.value == 0
+                          ? kPrimaryColor
+                          : null,
                       onTap: () => controller.changePage(0),
                     ),
                   ),
@@ -41,10 +47,28 @@ class DashboardView extends GetView<DashboardController> {
                 Obx(
                   () => Expanded(
                     child: NavigationBarItem(
-                      image: controller.pageIndex.value == 1 ? 'assets/pokeball.png' : 'assets/pokeball_inactive.png',
+                      image: controller.pageIndex.value == 1
+                          ? 'assets/pokeball.png'
+                          : 'assets/pokeball_inactive.png',
                       label: 'My Pokemon',
-                      labelColor: controller.pageIndex.value == 1 ? kPrimaryColor : null,
+                      labelColor: controller.pageIndex.value == 1
+                          ? kPrimaryColor
+                          : null,
                       onTap: () => controller.changePage(1),
+                    ),
+                  ),
+                ),
+                Obx(
+                  () => Expanded(
+                    child: NavigationBarItem(
+                      image: controller.pageIndex.value == 2
+                          ? 'assets/pokeball.png'
+                          : 'assets/pokeball_inactive.png',
+                      label: 'Sample',
+                      labelColor: controller.pageIndex.value == 2
+                          ? kPrimaryColor
+                          : null,
+                      onTap: () => controller.changePage(2),
                     ),
                   ),
                 ),

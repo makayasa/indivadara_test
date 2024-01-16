@@ -38,7 +38,8 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
             height: Get.mediaQuery.size.height * 0.3,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: const BorderRadius.vertical(bottom: Radius.circular(30)),
+              borderRadius:
+                  const BorderRadius.vertical(bottom: Radius.circular(30)),
               boxShadow: [
                 kElevationShadow(),
               ],
@@ -78,9 +79,12 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
           Expanded(
             child: Obx(
               () => AnimatedCrossFade(
-                crossFadeState: controller.isLoading.value ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                crossFadeState: controller.isLoading.value
+                    ? CrossFadeState.showFirst
+                    : CrossFadeState.showSecond,
                 duration: kDefaultFastDuration,
-                layoutBuilder: (topChild, topChildKey, bottomChild, bottomChildKey) {
+                layoutBuilder:
+                    (topChild, topChildKey, bottomChild, bottomChildKey) {
                   return topChild;
                 },
                 firstChild: const Center(
@@ -109,7 +113,8 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
                             () => SizedBox(
                               height: 35,
                               child: ListView.separated(
-                                itemCount: controller.data.value.types?.length ?? 0,
+                                itemCount:
+                                    controller.data.value.types?.length ?? 0,
                                 separatorBuilder: (context, index) {
                                   return const SizedBox(width: 10);
                                 },
@@ -118,7 +123,14 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
                                 itemBuilder: (context, index) {
                                   return Obx(
                                     () => DefaultChip(
-                                      label: (controller.data.value.types?[index].type?.name?.capitalizeFirst) ?? '',
+                                      label: (controller
+                                              .data
+                                              .value
+                                              .types?[index]
+                                              .type
+                                              ?.name
+                                              ?.capitalizeFirst) ??
+                                          '',
                                     ),
                                   );
                                 },
@@ -183,14 +195,17 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
                               () => ListView.separated(
                                 shrinkWrap: true,
                                 // itemCount: 10,
-                                itemCount: controller.data.value.moves?.length ?? 0,
+                                itemCount:
+                                    controller.data.value.moves?.length ?? 0,
                                 scrollDirection: Axis.horizontal,
                                 separatorBuilder: (context, index) {
                                   return const SizedBox(width: 10);
                                 },
                                 itemBuilder: (context, index) {
                                   return DefaultChip(
-                                    label: controller.data.value.moves![index].detailMove?.name ?? '',
+                                    label: controller.data.value.moves![index]
+                                            .detailMove?.name ??
+                                        '',
                                   );
                                 },
                               ),
@@ -203,42 +218,54 @@ class DetailPokemonView extends GetView<DetailPokemonController> {
                     Obx(
                       () => DetailPokemonStat(
                         label: 'HP',
-                        stateValue: controller.data.value.stats?[0].baseStat?.toDouble() ?? 0,
+                        stateValue: controller.data.value.stats?[0].baseStat
+                                ?.toDouble() ??
+                            0,
                       ),
                     ),
                     const SizedBox(height: 20),
                     Obx(
                       () => DetailPokemonStat(
                         label: 'Attack',
-                        stateValue: controller.data.value.stats?[1].baseStat?.toDouble() ?? 0,
+                        stateValue: controller.data.value.stats?[1].baseStat
+                                ?.toDouble() ??
+                            0,
                       ),
                     ),
                     const SizedBox(height: 20),
                     Obx(
                       () => DetailPokemonStat(
                         label: 'Defense',
-                        stateValue: controller.data.value.stats?[2].baseStat?.toDouble() ?? 0,
+                        stateValue: controller.data.value.stats?[2].baseStat
+                                ?.toDouble() ??
+                            0,
                       ),
                     ),
                     const SizedBox(height: 20),
                     Obx(
                       () => DetailPokemonStat(
                         label: 'Special-attack',
-                        stateValue: controller.data.value.stats?[3].baseStat?.toDouble() ?? 0,
+                        stateValue: controller.data.value.stats?[3].baseStat
+                                ?.toDouble() ??
+                            0,
                       ),
                     ),
                     const SizedBox(height: 20),
                     Obx(
                       () => DetailPokemonStat(
                         label: 'Special-deffense',
-                        stateValue: controller.data.value.stats?[4].baseStat?.toDouble() ?? 0,
+                        stateValue: controller.data.value.stats?[4].baseStat
+                                ?.toDouble() ??
+                            0,
                       ),
                     ),
                     const SizedBox(height: 20),
                     Obx(
                       () => DetailPokemonStat(
                         label: 'Speed',
-                        stateValue: controller.data.value.stats?[5].baseStat?.toDouble() ?? 0,
+                        stateValue: controller.data.value.stats?[5].baseStat
+                                ?.toDouble() ??
+                            0,
                       ),
                     ),
                   ],

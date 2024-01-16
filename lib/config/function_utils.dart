@@ -74,7 +74,8 @@ String currencyFormat(dynamic number) {
   }
 }
 
-void showToast(message, {bgColor, txtColor, ToastGravity gravity = ToastGravity.BOTTOM}) {
+void showToast(message,
+    {bgColor, txtColor, ToastGravity gravity = ToastGravity.BOTTOM}) {
   Fluttertoast.showToast(
     msg: message,
     toastLength: Toast.LENGTH_SHORT,

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../config/function_utils.dart';
@@ -40,7 +39,8 @@ class _PaginationBodyState extends State<PaginationBody> {
     scrollController = ScrollController()
       ..addListener(
         () {
-          var offset = scrollController.position.maxScrollExtent - widget.offsetPage;
+          var offset =
+              scrollController.position.maxScrollExtent - widget.offsetPage;
           if (scrollController.position.pixels >= offset) {
             if (!isCalled) {
               logKey('body position masuk', true);

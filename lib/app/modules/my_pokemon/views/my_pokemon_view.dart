@@ -35,7 +35,8 @@ class MyPokemonView extends GetView<MyPokemonController> {
               child: Stack(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                     decoration: const BoxDecoration(
                       color: kPrimaryColor,
                       borderRadius: kDefaultBorderRadius10,
@@ -51,7 +52,8 @@ class MyPokemonView extends GetView<MyPokemonController> {
                             ),
                             child: Hero(
                               tag: '${controller.myPokemons[index].id}',
-                              child: CachedNetworkImage(imageUrl: '$imageBaseUrl/$id.png'),
+                              child: CachedNetworkImage(
+                                  imageUrl: '$imageBaseUrl/$id.png'),
                             ),
                           ),
                         ),

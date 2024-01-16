@@ -10,8 +10,6 @@ class DashboardController extends GetxController {
     pageController.jumpToPage(index);
   }
 
-
-
   @override
   void onClose() {
     super.onClose();

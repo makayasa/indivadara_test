@@ -55,7 +55,8 @@ class ListPokemonsView extends GetView<ListPokemonsController> {
                             color: kBgWhite,
                             borderRadius: kDefaultBorderRadius10,
                           ),
-                          child: CachedNetworkImage(imageUrl: '$imageBaseUrl/$id.png'),
+                          child: CachedNetworkImage(
+                              imageUrl: '$imageBaseUrl/$id.png'),
                         ),
                       ),
                     ),
