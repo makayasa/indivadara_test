@@ -7,39 +7,39 @@ part 'game_index.g.dart';
 
 @JsonSerializable()
 class GameIndex {
-	@JsonKey(name: 'game_index') 
-	final int? gameIndex;
-	final Version? version;
+  @JsonKey(name: 'game_index')
+  final int? gameIndex;
+  final Version? version;
 
-	const GameIndex({this.gameIndex, this.version});
+  const GameIndex({this.gameIndex, this.version});
 
-	@override
-	String toString() => 'GameIndex(gameIndex: $gameIndex, version: $version)';
+  @override
+  String toString() => 'GameIndex(gameIndex: $gameIndex, version: $version)';
 
-	factory GameIndex.fromJson(Map<String, dynamic> json) {
-		return _$GameIndexFromJson(json);
-	}
+  factory GameIndex.fromJson(Map<String, dynamic> json) {
+    return _$GameIndexFromJson(json);
+  }
 
-	Map<String, dynamic> toJson() => _$GameIndexToJson(this);
+  Map<String, dynamic> toJson() => _$GameIndexToJson(this);
 
-	GameIndex copyWith({
-		int? gameIndex,
-		Version? version,
-	}) {
-		return GameIndex(
-			gameIndex: gameIndex ?? this.gameIndex,
-			version: version ?? this.version,
-		);
-	}
+  GameIndex copyWith({
+    int? gameIndex,
+    Version? version,
+  }) {
+    return GameIndex(
+      gameIndex: gameIndex ?? this.gameIndex,
+      version: version ?? this.version,
+    );
+  }
 
-	@override
-	bool operator ==(Object other) {
-		if (identical(other, this)) return true;
-		if (other is! GameIndex) return false;
-		final mapEquals = const DeepCollectionEquality().equals;
-		return mapEquals(other.toJson(), toJson());
-	}
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    if (other is! GameIndex) return false;
+    final mapEquals = const DeepCollectionEquality().equals;
+    return mapEquals(other.toJson(), toJson());
+  }
 
-	@override
-	int get hashCode => gameIndex.hashCode ^ version.hashCode;
+  @override
+  int get hashCode => gameIndex.hashCode ^ version.hashCode;
 }

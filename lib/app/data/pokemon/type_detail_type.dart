@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-
 part 'type_detail_type.g.dart';
 
 @JsonSerializable()
@@ -17,7 +16,8 @@ class DetailType {
   @override
   String toString() => 'DetailType(slot: $name, type: $url)';
 
-  factory DetailType.fromJson(Map<String, dynamic> json) => _$DetailTypeFromJson(json);
+  factory DetailType.fromJson(Map<String, dynamic> json) =>
+      _$DetailTypeFromJson(json);
 
   Map<String, dynamic> toJson() => _$DetailTypeToJson(this);
 

@@ -9,52 +9,50 @@ part 'generation_iv.g.dart';
 
 @JsonSerializable()
 class GenerationIv {
-	@JsonKey(name: 'diamond-pearl') 
-	final DiamondPearl? diamondPearl;
-	@JsonKey(name: 'heartgold-soulsilver') 
-	final HeartgoldSoulsilver? heartgoldSoulsilver;
-	final Platinum? platinum;
+  @JsonKey(name: 'diamond-pearl')
+  final DiamondPearl? diamondPearl;
+  @JsonKey(name: 'heartgold-soulsilver')
+  final HeartgoldSoulsilver? heartgoldSoulsilver;
+  final Platinum? platinum;
 
-	const GenerationIv({
-		this.diamondPearl, 
-		this.heartgoldSoulsilver, 
-		this.platinum, 
-	});
+  const GenerationIv({
+    this.diamondPearl,
+    this.heartgoldSoulsilver,
+    this.platinum,
+  });
 
-	@override
-	String toString() {
-		return 'GenerationIv(diamondPearl: $diamondPearl, heartgoldSoulsilver: $heartgoldSoulsilver, platinum: $platinum)';
-	}
+  @override
+  String toString() {
+    return 'GenerationIv(diamondPearl: $diamondPearl, heartgoldSoulsilver: $heartgoldSoulsilver, platinum: $platinum)';
+  }
 
-	factory GenerationIv.fromJson(Map<String, dynamic> json) {
-		return _$GenerationIvFromJson(json);
-	}
+  factory GenerationIv.fromJson(Map<String, dynamic> json) {
+    return _$GenerationIvFromJson(json);
+  }
 
-	Map<String, dynamic> toJson() => _$GenerationIvToJson(this);
+  Map<String, dynamic> toJson() => _$GenerationIvToJson(this);
 
-	GenerationIv copyWith({
-		DiamondPearl? diamondPearl,
-		HeartgoldSoulsilver? heartgoldSoulsilver,
-		Platinum? platinum,
-	}) {
-		return GenerationIv(
-			diamondPearl: diamondPearl ?? this.diamondPearl,
-			heartgoldSoulsilver: heartgoldSoulsilver ?? this.heartgoldSoulsilver,
-			platinum: platinum ?? this.platinum,
-		);
-	}
+  GenerationIv copyWith({
+    DiamondPearl? diamondPearl,
+    HeartgoldSoulsilver? heartgoldSoulsilver,
+    Platinum? platinum,
+  }) {
+    return GenerationIv(
+      diamondPearl: diamondPearl ?? this.diamondPearl,
+      heartgoldSoulsilver: heartgoldSoulsilver ?? this.heartgoldSoulsilver,
+      platinum: platinum ?? this.platinum,
+    );
+  }
 
-	@override
-	bool operator ==(Object other) {
-		if (identical(other, this)) return true;
-		if (other is! GenerationIv) return false;
-		final mapEquals = const DeepCollectionEquality().equals;
-		return mapEquals(other.toJson(), toJson());
-	}
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    if (other is! GenerationIv) return false;
+    final mapEquals = const DeepCollectionEquality().equals;
+    return mapEquals(other.toJson(), toJson());
+  }
 
-	@override
-	int get hashCode =>
-			diamondPearl.hashCode ^
-			heartgoldSoulsilver.hashCode ^
-			platinum.hashCode;
+  @override
+  int get hashCode =>
+      diamondPearl.hashCode ^ heartgoldSoulsilver.hashCode ^ platinum.hashCode;
 }

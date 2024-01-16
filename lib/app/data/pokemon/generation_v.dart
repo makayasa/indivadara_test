@@ -7,36 +7,36 @@ part 'generation_v.g.dart';
 
 @JsonSerializable()
 class GenerationV {
-	@JsonKey(name: 'black-white') 
-	final BlackWhite? blackWhite;
+  @JsonKey(name: 'black-white')
+  final BlackWhite? blackWhite;
 
-	const GenerationV({this.blackWhite});
+  const GenerationV({this.blackWhite});
 
-	@override
-	String toString() => 'GenerationV(blackWhite: $blackWhite)';
+  @override
+  String toString() => 'GenerationV(blackWhite: $blackWhite)';
 
-	factory GenerationV.fromJson(Map<String, dynamic> json) {
-		return _$GenerationVFromJson(json);
-	}
+  factory GenerationV.fromJson(Map<String, dynamic> json) {
+    return _$GenerationVFromJson(json);
+  }
 
-	Map<String, dynamic> toJson() => _$GenerationVToJson(this);
+  Map<String, dynamic> toJson() => _$GenerationVToJson(this);
 
-	GenerationV copyWith({
-		BlackWhite? blackWhite,
-	}) {
-		return GenerationV(
-			blackWhite: blackWhite ?? this.blackWhite,
-		);
-	}
+  GenerationV copyWith({
+    BlackWhite? blackWhite,
+  }) {
+    return GenerationV(
+      blackWhite: blackWhite ?? this.blackWhite,
+    );
+  }
 
-	@override
-	bool operator ==(Object other) {
-		if (identical(other, this)) return true;
-		if (other is! GenerationV) return false;
-		final mapEquals = const DeepCollectionEquality().equals;
-		return mapEquals(other.toJson(), toJson());
-	}
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    if (other is! GenerationV) return false;
+    final mapEquals = const DeepCollectionEquality().equals;
+    return mapEquals(other.toJson(), toJson());
+  }
 
-	@override
-	int get hashCode => blackWhite.hashCode;
+  @override
+  int get hashCode => blackWhite.hashCode;
 }
